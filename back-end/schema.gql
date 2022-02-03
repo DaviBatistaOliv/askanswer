@@ -1,0 +1,131 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Question {
+  id: ID!
+  user: User!
+  userId: Float!
+  title: String!
+  content: String!
+  voteCount: Float!
+  tags: String
+  createdAt: DateTime
+  updatedAt: DateTime!
+  userConnection: [User!]!
+  questionConnection: [User!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  questionConnection: [Question!]!
+  answerConnection: [Answer!]!
+}
+
+type Answer {
+  id: ID!
+  user: User!
+  question: Question!
+  userId: Float!
+  questionId: Float!
+  content: String!
+  voteCount: Float
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  questionConnection: [Question!]!
+  userConnection: [User!]!
+}
+
+type Auth {
+  access_token: String!
+}
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  answers: [Answer!]!
+  answer(id: Int!): Answer!
+  questions: [Question!]!
+  question(id: Int!): Question!
+  login(data: LoginAuthInput!): Auth!
+}
+
+input LoginAuthInput {
+  password: String!
+  username: String!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
+  updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
+  removeAnswer(data: DeleteAnswerInput!): Answer!
+  createQuestion(createQuestionInput: CreateQuestionInput!): Question!
+  updateQuestion(updateQuestionInput: UpdateQuestionInput!): Question!
+  removeQuestion(data: DeleteQuestionInput!): Question!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  username: String
+  email: String
+  password: String
+  id: Int!
+}
+
+input CreateAnswerInput {
+  userId: ID!
+  questionId: ID!
+  content: String!
+}
+
+input UpdateAnswerInput {
+  userId: ID
+  questionId: ID
+  content: String
+  id: ID!
+}
+
+input DeleteAnswerInput {
+  id: ID!
+  userId: ID!
+}
+
+input CreateQuestionInput {
+  userId: ID!
+  title: String!
+  content: String!
+  voteCount: Float!
+  tags: String!
+}
+
+input UpdateQuestionInput {
+  userId: ID
+  title: String
+  content: String
+  voteCount: Float
+  tags: String
+  id: ID!
+}
+
+input DeleteQuestionInput {
+  id: ID!
+  userId: ID!
+}
