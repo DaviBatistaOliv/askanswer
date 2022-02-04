@@ -66,8 +66,8 @@ input LoginAuthInput {
 }
 
 type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
+  createUser(data: CreateUserInput!): User!
+  updateUser(data: UpdateUserInput!): User!
   removeUser(id: Int!): User!
   createAnswer(createAnswerInput: CreateAnswerInput!): Answer!
   updateAnswer(updateAnswerInput: UpdateAnswerInput!): Answer!
@@ -112,7 +112,6 @@ input CreateQuestionInput {
   userId: ID!
   title: String!
   content: String!
-  voteCount: Float!
   tags: String!
 }
 
@@ -120,7 +119,6 @@ input UpdateQuestionInput {
   userId: ID
   title: String
   content: String
-  voteCount: Float
   tags: String
   id: ID!
 }

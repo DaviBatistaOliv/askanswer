@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div
+  class="login__contianer d-flex flex-column justify-content-center align-items-center"
+>
+  <div class="login__form">
+    <header class="login__form_header mb-4">
+      <h1 class="fs-4 fw-bold mb-1">Sentimos sua falta!</h1>
+      <p class="fw-light">
+        Mais de 150 perguntas estão esperando por suas sugestões sábias!
+      </p>
+    </header>
+    <akw-form-login (formChange)="onLogin($event)"></akw-form-login>
+  </div>
+</div>
+<div class="login__image"></div>

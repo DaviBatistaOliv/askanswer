@@ -1,0 +1,54 @@
+<form>
+  <akw-input
+    label="username"
+    class="mb-3"
+    [control]="$any(form).get('username')"
+  >
+    <span hint class="text-danger">
+      Nome de usuário informado não está disponível
+    </span>
+  </akw-input>
+
+  <akw-input
+    type="email"
+    class="mb-3"
+    label="email"
+    [control]="$any(form).get('email')"
+  >
+    <span hint class="text-danger">
+      <!--  -->
+      Esse endereço de email já está em uso
+    </span>
+  </akw-input>
+
+  <akw-input
+    type="password"
+    class="mb-3"
+    label="senha"
+    [control]="$any(form).get('password')"
+  >
+  </akw-input>
+
+  <akw-input
+    type="password"
+    class="mb-3"
+    label="senha novamente"
+    [control]="$any(form).get('confirmPassword')"
+  >
+    <span
+      hint
+      class="text-danger"
+      *ngIf="$any(form).get('confirmPassword').errors?.not_match"
+    >
+      As senhas não coincidem
+    </span>
+  </akw-input>
+
+  <akw-button
+    classlist="w-100"
+    [disabled]="form.invalid"
+    (click)="onFormChange()"
+  >
+    Cadastrar
+  </akw-button>
+</form>

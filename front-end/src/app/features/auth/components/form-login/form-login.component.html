@@ -1,0 +1,18 @@
+<akw-input label="username" class="mb-3" [control]="$any(form).get('username')">
+</akw-input>
+
+<akw-input
+  type="password"
+  label="senha"
+  class="mb-3"
+  [control]="$any(form).get('password')"
+>
+</akw-input>
+
+<akw-button
+  classlist="w-100"
+  [disabled]="form.invalid"
+  (click)="onFormChange()"
+>
+  Login
+</akw-button>

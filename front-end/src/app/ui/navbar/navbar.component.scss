@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #fff;
+  min-height: 68px;
+  padding: 0.5em 1.5em;
+  align-items: center;
+
+  .navbar {
+    &__logo {
+      img {
+        width: 124px;
+      }
+      margin-right: 1em;
+    }
+  }
+}

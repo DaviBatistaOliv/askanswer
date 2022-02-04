@@ -1,0 +1,39 @@
+<mat-form-field
+  class="w-100 field-icon-redress"
+  [appearance]="appearance"
+  [floatLabel]="floatLabel"
+>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    *ngIf="type !== 'area'; else area"
+  />
+
+  <ng-template #area>
+    <textarea
+      matInput
+      [placeholder]="placeholder"
+      [formControl]="control"
+      [rows]="areaRows"
+    ></textarea>
+  </ng-template>
+
+  <div matPrefix [ngTemplateOutlet]="prefix"></div>
+
+  <div matSuffix [ngTemplateOutlet]="sufix"></div>
+
+  <mat-hint>
+    <ng-content select="[hint]"></ng-content>
+  </mat-hint>
+</mat-form-field>
+
+<ng-template #prefix>
+  <ng-content select="[prefix]"></ng-content>
+</ng-template>
+
+<ng-template #sufix>
+  <ng-content select="[sufix]"></ng-content>
+</ng-template>

@@ -1,0 +1,15 @@
+@import "variables/color.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  height: 100vh;
+  background-color: $color-white;
+
+  .item__active {
+    border-left: 4px solid $color-orange !important;
+    background-color: $color-subprime;
+    color: $color-orange;
+  }
+}

@@ -16,6 +16,13 @@ const routes: Routes = [
         (m) => m.RegisterModule
       ),
   },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./pages/internal-layout/internal-layout.module').then(
+        (m) => m.InternalLayoutModule
+      ),
+  },
 ];
 
 @NgModule({
