@@ -2,6 +2,7 @@ import {
   Inject,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
@@ -52,8 +53,14 @@ export class UsersService {
     return this.repository.find();
   }
 
-  async findOne(id: number) {
-    return this.repository.findOne(id);
+  async findById(id: number) {
+    const user = await this.repository.findOne(id);
+
+    if (!user) {
+      return new NotFoundException('User not found');
+    }
+
+    return user;
   }
 
   async update(id: number, updateUserInput: UpdateUserInput) {

@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, HideField, ID, ObjectType } from '@nestjs/graphql';
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { Answer } from 'src/resources/answers/entities/answer.entity';
 import { Question } from 'src/resources/questions/entities/question.entity';
@@ -25,6 +25,7 @@ export class User {
   email: string;
 
   @Column()
+  @HideField()
   password: string;
 
   @CreateDateColumn({ name: 'created_at' })
